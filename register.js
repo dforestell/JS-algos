@@ -8,11 +8,17 @@ function checkCashRegister(price, cash, cid) {
         return acc;
       }, { total: 0 });
 
-        if (change > register.total.toFixed(2)){
-            output.status = 'INSUFFICENT_FUNDS';
-            console.log(output)
+        if (change > register.total){
+            output.status = 'INSUFFICIENT_FUNDS';
+            return output;
+        }
+
+        if (change === register.total){
+            output.status = 'CLOSED';
+            output.change = cid;
             return output
         }
+
   }
   
   // Example cash-in-drawer array:
